@@ -6,5 +6,9 @@
 - é um grupo de campos **relacionados entre si**, como se os dados pertencessem à mesma pessoa.
 - Dessa forma, um **ARQUIVO** é um grupo de **registros relacionados**
 - Para **facilitar** que registros de um arquivo sejam recuperados, um campo de cada registro é escolhido como *chave dos registros*, identificando um registro sendo pertencente a determinada entidade
-- ## Organização
-  - 
+## Organização
+### **arquivo sequencial**
+- os regitros são armazenados em ordem de acordo com a *chave*, geralmente em ordem crescente (menor pro maior número, por exemplo)
+### Banco de dados
+- um grupo de arquivos relacionados entre si pode ser considerado um *banco de dados*, gerenciados por *SGBD*
+  
