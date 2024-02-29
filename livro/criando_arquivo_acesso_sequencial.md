@@ -69,6 +69,85 @@ main(){
 ```
 ## Recuperar dados sequencialmente 
 - Leitura do arquivo sequencialmente até chegar no dado buscado
-- Instrução: **rewind(cfPtr);
-  - 
+- Instrução: **rewind(cfPtr);**
+  - A função rewind(cfPtr) reposiciona o indicador de posição do arquivo.
+  - O indicador de posição representa o número do próximo byte a ser lido ou gravado no arquivo.
+  - Não é um ponteiro real, mas sim um valor inteiro que especifica a posição do byte.
+  - Também conhecido como **offset** de arquivo.
+  - Ao chamar rewind, o indicador de posição é movido para o **início do arquivo**, ou seja, o byte 0.
+  - Isso permite a leitura e gravaçao de dados a partir do início do arquivo novamente.
+
+## Programa de consulta de crédito 
+- o gerente obtém a lista de clientes c/ crédito 0, c/ saldos credores (negativo) e devedores (positivo)
+```C
+#include <stdio.h>
+#include <stdio.h>
+
+main()
+{
+    int pedido, conta;
+    float saldo;
+    char nome[30];
+    FILE *cfPtr;
+
+    if ((cfPtr = fopen("clientes.dat", "r")) == NULL)
+    {
+        printf("Arquivo nao pode ser aberto\n");
+    }
+    else
+    {
+        printf("Digite pedido\n"
+               "1 — Lista contas com saldo zero\n"
+               "2 — Lista contas com saldo credor\n"
+               "3 — Lista contas com saldo devedor\n"
+               "4 — Encerra o programa\n? ");
+        scanf("%d", &pedido);
+
+        while (pedido != 4)
+        {
+            fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo);
+            switch (pedido)
+            {
+            case 1:
+                printf("\nContas com saldo zero:\n");
+                while (!feof(cfPtr))
+                {
+                    if (saldo == 0)
+                        printf("%-10d%-13s%7.2f \n", conta, nome, saldo);
+                    fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo);
+                }
+                break;
+
+            case 2:
+                printf("\nContas com saldo credor:\n");
+                while (!feof(cfPtr))
+                {
+                    if (saldo < 0)
+                        printf("%-10d%-13s%7.2f\n", conta, nome, saldo);
+                    fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo);
+                }
+                break;
+
+            case 3:
+                printf("\nContas com saldo devedor:\n");
+                while (!feof(cfPtr))
+                {
+                    if (saldo > 0)
+                        printf("%-10d%-13s%7.2f\n", conta, nome, saldo);
+                    fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo);
+                }
+                break;
+            }
+            rewind(cfPtr);
+            printf("\n? ");
+            scanf("%d", &pedido);
+        }
+
+        printf("Fim do programa.\n");
+        fclose(cfPtr);
+    }
+    return 0;
+}
+```
+- continuar da pag 17
 
