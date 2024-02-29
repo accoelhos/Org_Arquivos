@@ -81,7 +81,6 @@ main(){
 - o gerente obtém a lista de clientes c/ crédito 0, c/ saldos credores (negativo) e devedores (positivo)
 ```C
 #include <stdio.h>
-#include <stdio.h>
 
 main()
 {
@@ -149,5 +148,12 @@ main()
     return 0;
 }
 ```
-- continuar da pag 17
+- O acesso sequencial com **fprintf** e **fscanf** não é usado para atualizar registros no local onde se encontravam. Nesse caso, o arquivo inteiro é reescrito.
+- Exemplo: uma alteração de nome de um registro por um nome maior que o anterior.
+  - A alteração de nome mencionada envolve copiar registros de um arquivo sequencial para um novo arquivo.
+  - Registros anteriores ao registro "300 White 0.00" seriam copiados para o novo arquivo.
+  - O novo registro seria gravado após os registros copiados.
+  - Registros após o registro "300 White 0.00" também seriam copiados para o novo arquivo.
+  - Isso requer o processamento de todos os registros do arquivo original para atualizar um único registro.
+
 
