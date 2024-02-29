@@ -1,4 +1,5 @@
 ## Criando um arquivo de acesso sequencial
+## Escrevendo dados em arquivo sequencial
 - **exemplo**: sistema de contas
 - P/ cada cliente, o pgm obtém um número de conta, nome e saldo do cliente, constituindo um **registro** para ele. O **campo chave** é o numero da conta, mantendo e ordenando os arquivos.
 ```C
@@ -28,3 +29,40 @@ main(){
   return 0;
 }
 ```
+- Cada arquivo deve ter um nome e um ponteiro diferente retornado por **f open**
+- 2º argumento do f open - Modos de acesso:
+  - W: escrita no arquivo  (write)
+  - R: leitura do arquivo (read)
+  - A: adicionar registros ao final de um arquivo existende (arquive anexação)
+  - Modos de atualização:
+    - R+: ABRE o arquivo pra leitura e escrita/gravação
+    - W+: CRIA o arquivo pra leitura e escrita/gravaçao
+    - A+: ABRE o arquivo pra leitura e escrita/gravação no FINAL do arquivo. Se não existir, o arquivo é criado.
+
+## Lendo dados em arquivo sequencial
+- Mesmo exemplo de conta e mesmos comando, mas agora para LER dados:
+```C
+#include <stdio.h>
+
+main(){
+  int conta;
+  char nome[30];
+  float saldo;
+  FILE *cfPtr; /* ponteiro do arquivo */
+
+  if((cfPtr fopen("clientes.dat", r) == NULL)
+    printf("Arquivo nao pode ser aberto");
+
+  else{
+   
+   printf("%-10s%-13s%s\n", "Conta", "Nome", "Saldo");
+   fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo);
+  
+   while (!feof(cfPtr)) {
+      printf("%-10d%-13s%7.2f\n", conta, nome, saldo);
+      fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo);
+   }
+   fclose(cfPtr);
+   }
+ return 0;
+ }
