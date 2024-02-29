@@ -50,13 +50,13 @@ main(){
   float saldo;
   FILE *cfPtr; /* ponteiro do arquivo */
 
-  if((cfPtr fopen("clientes.dat", r) == NULL)
+  if((cfPtr fopen("clientes.dat", r) == NULL) /* abrindo o arquivo para LEITURA com r e ve se foi aberto corretamente*/
     printf("Arquivo nao pode ser aberto");
 
   else{
    
    printf("%-10s%-13s%s\n", "Conta", "Nome", "Saldo");
-   fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo);
+   fscanf(cfPtr, "%d%s%f", &conta, nome, &saldo); /* lê um REGISTRO do arquivo. funciona igual o scanf mas recebendo um argumento do ponteiro do arquivo a ser lido. Cada vez que fscanf for executado, os valores se tornam outros (outras contas, nomes, saldos) até o final do arquivo*/
   
    while (!feof(cfPtr)) {
       printf("%-10d%-13s%7.2f\n", conta, nome, saldo);
@@ -66,3 +66,9 @@ main(){
    }
  return 0;
  }
+```
+## Recuperar dados sequencialmente 
+- Leitura do arquivo sequencialmente até chegar no dado buscado
+- Instrução: **rewind(cfPtr);
+  - 
+
