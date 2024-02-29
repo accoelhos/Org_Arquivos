@@ -67,12 +67,15 @@ int main()
 	strcpy(p.nome, "Nome"); // pois para strings nao pode fazer p.nome = "nome"
 	p.idade = 20;
 	p.altura = 150;
-	fwrite(&p, sizeof(Pessoa),1,f); //escreva os bytes do end p (tamanho é o size of pessoa, que diz quantos bytes ocupa na memoria), 
+	fwrite(&p, sizeof(Pessoa),1,f); //escreva os bytes do end p (tamanho é o size of pessoa, que diz quantos bytes ocupa na memoria), quantos são, no lugar pra onde f aponta
 	fclose(f);
 	
 	return 0;
 }
 ```
+- é possivel zerar todo o arquivo com memset(p,0,1000*sizeof(Pessoa))
+- quando é executado, o arquivo é criado. Abrindo com editor convencional, só da pra ler o nome.
+- Para investigar um arquivo binario, é possivel utilizar um plugin de editor **hexadecimal**. 
 
 
 
