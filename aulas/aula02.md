@@ -49,6 +49,8 @@ int main(int argc, char** argv){
 - Só existe EOF após uma tentativa de leitura que NÃO deu certo.
 
 - copia2.c
+- Alguns simbolos não sao imprimiveis em um arquivo texto, de acordo com a tabela *ASCII* (primeira parte da tabela na wikipedia)
+- 
 
 
 
