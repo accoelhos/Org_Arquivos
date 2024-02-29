@@ -29,6 +29,7 @@ main(){
   return 0;
 }
 ```
+
 - Cada arquivo deve ter um nome e um ponteiro diferente retornado por **f open**
 - 2º argumento do f open - Modos de acesso:
   - W: escrita no arquivo  (write)
