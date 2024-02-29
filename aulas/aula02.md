@@ -9,7 +9,7 @@
 int main(int argc, char** argv){
 	
 	FILE *entrada, *saida; // ponteiros que indicam arquivo aberto
-	int c;
+	int c;t
 
 	if(argc != 3) // verificando de 3 argumentos foram passados
 	{
