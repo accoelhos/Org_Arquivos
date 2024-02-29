@@ -1,8 +1,7 @@
 ## Aula 02 - 29/02
 
-- copia1.c: argc qtd de argumentos passados; argv é quais argumentos foram passados
-  
-ˋˋˋC
+- **copia1.c**: argc qtd de argumentos passados; argv é quais argumentos foram passados
+```C
 #include <stdio.h>
 //stdout, stdin, stderr
 
@@ -44,13 +43,37 @@ int main(int argc, char** argv){
 	fclose(saida);
 	return 0;
 }
-ˋˋˋ
+```
 - o arquivo pode ser visto como abstraçao para os SOs modernos, sendo uma sequencia de bytes persistentes
 - Só existe EOF após uma tentativa de leitura que NÃO deu certo.
 
-- copia2.c
+- **copia2.c**
 - Alguns simbolos não sao imprimiveis em um arquivo texto, de acordo com a tabela *ASCII* (primeira parte da tabela na wikipedia)
-- 
+
+### Criando arquivo binario 
+```C
+#include <stdio.h>
+
+struct Pessoa // definindo um especificaçao para um binario
+	char nome[40];
+	int idade;
+	float altura;
+};
+typedef struct _Pessoa Pessoa;
+
+int main()
+	FILE *f = fopen ("saida.dat", "wb"); //se esse arquivo nao existir ele cria, se ja existir ele apaga tudo.
+	Pessoa p;
+	strcpy(p.nome, "Nome"); // pois para strings nao pode fazer p.nome = "nome"
+	p.idade = 20;
+	p.altura = 150;
+	fwrite(&p, sizeof(Pessoa),1,f); //escreva os bytes do end p (tamanho é o size of pessoa, que diz quantos bytes ocupa na memoria), 
+	fclose(f);
+	
+	return 0;
+}
+```
+
 
 
 
