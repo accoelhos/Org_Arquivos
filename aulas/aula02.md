@@ -62,7 +62,7 @@ struct Pessoa // definindo um especificaçao para um binario
 typedef struct _Pessoa Pessoa;
 
 int main()
-	FILE *f = fopen ("saida.dat", "wb"); //se esse arquivo nao existir ele cria, se ja existir ele apaga tudo.
+	FILE *f = fopen ("pessoas.dat", "wb"); //se esse arquivo nao existir ele cria, se ja existir ele apaga tudo.
 	Pessoa p;
 	strcpy(p.nome, "Nome"); // pois para strings nao pode fazer p.nome = "nome"
 	p.idade = 20;
@@ -75,7 +75,11 @@ int main()
 ```
 - é possivel zerar todo o arquivo com memset(p,0,1000*sizeof(Pessoa))
 - quando é executado, o arquivo é criado. Abrindo com editor convencional, só da pra ler o nome.
-- Para investigar um arquivo binario, é possivel utilizar um plugin de editor **hexadecimal**. 
+- Para investigar um arquivo binario, é possivel utilizar um plugin de editor **hexadecimal**.
+- Para pegar infos do arquivo e consumir: **fread**, abrindo ANTES em **rb**.
+- em int qt = fread(p,sizeof(Pessoa),1,f) ele retorna a qtd de infos que conseguiu **ler**
+- 
+	
 
 
 
